@@ -20,4 +20,22 @@ describe('ComponentName', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+   errorCallback(error: any) {
+    this.loadingService.stopLoading();
+    const e = (error && error.error && error.error.errors && error.error.errors[0]) || error;
+    this.setErrorHandler(e);
+  }
+
+  filterCheckboxCallback = row => {
+    return row.policyStatus === 'Active';
+  }
+
+  enableLoad() {
+    this.isLoading = true;
+  }
+
+  disableLoad() {
+    this.isLoading = false;
+  }
   
